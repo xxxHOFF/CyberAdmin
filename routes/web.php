@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,26 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::view('/', 'index')->name('index');
+Route::view('/success', 'success')->middleware('auth')->name('success');
+Route::view('/403', 'accessDenied')->name('403');
 
-Route::get('/users', function () {
-    return view('BD\users');
-})->name('users');
-
-Route::get('/products', function () {
-    return view('BD\products');
-})->name('products');
-
-Route::get('/booking', function () {
-    return view('BD\booking');
-})->name('booking');
-
-Route::get('/sales', function () {
-    return view('BD\sales');
-})->name('sales');
-
-Route::get('/status', function () {
-    return view('status');
-})->name('status');
+Route::get('/register', [RegisterController::class, 'create'])->middleware('auth')->middleware('guest')->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
