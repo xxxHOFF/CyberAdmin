@@ -65,4 +65,11 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
+
+    protected $routeMiddleware = [
+        'ip.throttle' => \App\Http\Middleware\IpThrottleMiddleware::class,
+        'telescope' => \App\Http\Middleware\TelescopeAccess::class,
+        'check.auth.level' => \App\Http\Middleware\CheckAuthLevel::class,
+        'check.permits' => \App\Http\Middleware\CheckPermits::class,
+    ];
 }

@@ -23,6 +23,10 @@
     color: #212529 !important;
 }
 
+.setHoverColor:hover{
+    color: #ffc107 !important;
+}
+
 h1 {
     font-size: 24px; /* Установите желаемый размер шрифта для надписи "CyberAdmin" */
 }
@@ -63,4 +67,18 @@ h1 {
 .form-control:focus {
     border-color: #ffc107; /* Измените цвет рамки при фокусе */
     box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+.btn-icon {
+    display: inline-block;
+    padding: 0;
+    background: none;
+    margin-right: 1rem;
+}
+
+.btn-icon i {
+    font-size: 1.5em;/* Размер иконки */
+    display: block;
+    width: 1.5em; /* Ширина иконки */
+    height: 1.5em; /* Высота иконки */
 }
