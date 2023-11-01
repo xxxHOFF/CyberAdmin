@@ -82,3 +82,54 @@ h1 {
     width: 1.5em; /* Ширина иконки */
     height: 1.5em; /* Высота иконки */
 }
+
+.modal-success-animation, .modal-fail-animation {
+    position: relative;
+    display: inline-block;
+    width: 7.5rem; /* Размер контейнера */
+    height: 7.5rem; /* Размер контейнера */
+    justify-content: center;
+}
+
+.modal-success-animation::before {
+    content: "";
+    position: absolute;
+    width: 7rem; /* Размер круга */
+    height: 7rem; /* Размер круга */
+    border: 3px dashed green;
+    border-radius: 50%; /* Делаем форму круглой */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрируем круг */
+    animation: runBorder 2s linear infinite;
+}
+
+.modal-fail-animation::before {
+    content: "";
+    position: absolute;
+    width: 7rem; /* Размер круга */
+    height: 7rem; /* Размер круга */
+    border: 3px dashed red;
+    border-radius: 50%; /* Делаем форму круглой */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрируем круг */
+    animation: runBorder 2s linear infinite;
+}
+
+.modal-success-animation i, .modal-fail-animation i {
+    font-size: 5rem;
+}
+
+@keyframes runBorder {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.sale-methodRadio{
+    margin: 1rem auto;
+}

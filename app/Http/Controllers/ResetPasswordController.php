@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -36,7 +37,8 @@ class ResetPasswordController extends Controller
             ])->save();
         });
         if($status === Password::PASSWORD_RESET){
-            return redirect(RouteServiceProvider::HOME)->with('status', trans($status));
+            Log::info('Пользователь с почтой ' . $request->reset_email . ' изменил пароль от своего аккаунта');
+            return redirect(RouteServiceProvider::HOME)->with('status_success', trans($status));
         }
         throw new HttpException(400, 'Неверный запрос.');
     }

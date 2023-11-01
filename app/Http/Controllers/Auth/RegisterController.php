@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,13 @@ class RegisterController extends Controller
         ]);
 
         Auth::login($user, $request->boolean('remember'));
-
+        Log::info('Пользователь с ID ' . auth()->user()->id . ' зарегестрировался ' . "\n" .
+            'Имя: ' . auth()->user()->name . "\n" .
+            'E-mail: ' . auth()->user()->email. "\n" .
+            'Адрес: ' . auth()->user()->address. "\n" .
+            'Уровень: ' . auth()->user()->level. "\n" .
+            'Создан: ' . auth()->user()->created_at . "\n" .
+            'Изменен: ' . auth()->user()->updated_at);
         return redirect(RouteServiceProvider::HOME)->with('status', 'Регистрация выполнена успешно.');
     }
 }

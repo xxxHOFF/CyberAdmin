@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -28,7 +29,14 @@ class LoginController extends Controller
             if (Hash::check($request->input('password'), $user->password)) {
                 $request->session()->regenerate();
                 Auth::login($user, $request->boolean('remember'));
-                return redirect(RouteServiceProvider::HOME)->with('status', 'Вход выполнен успешно.');
+                Log::info('Пользователь с ID ' . auth()->user()->id . ' вошел в систему ' . "\n" .
+                    'Имя: ' . auth()->user()->name . "\n" .
+                    'E-mail: ' . auth()->user()->email. "\n" .
+                    'Адрес: ' . auth()->user()->address. "\n" .
+                    'Уровень: ' . auth()->user()->level. "\n" .
+                    'Создан: ' . auth()->user()->created_at . "\n" .
+                    'Изменен: ' . auth()->user()->updated_at);
+                return redirect(RouteServiceProvider::HOME)->with('status_success', 'Вход выполнен успешно.');
             } else {
                 return back()->withInput()->withErrors([
                     'password' => 'Неверный пароль!',
@@ -39,9 +47,16 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+        Log::info('Пользователь с ID ' . auth()->user()->id . ' вышел из системы ' . "\n" .
+            'Имя: ' . auth()->user()->name . "\n" .
+            'E-mail: ' . auth()->user()->email. "\n" .
+            'Адрес: ' . auth()->user()->address. "\n" .
+            'Уровень: ' . auth()->user()->level. "\n" .
+            'Создан: ' . auth()->user()->created_at . "\n" .
+            'Изменен: ' . auth()->user()->updated_at);
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect(RouteServiceProvider::HOME)->with('status', 'Выход выполнен успешно.');
+        return redirect(RouteServiceProvider::HOME)->with('status_success', 'Выход выполнен успешно.');
     }
 }

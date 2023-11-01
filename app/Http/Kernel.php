@@ -70,6 +70,5 @@ class Kernel extends HttpKernel
         'ip.throttle' => \App\Http\Middleware\IpThrottleMiddleware::class,
         'telescope' => \App\Http\Middleware\TelescopeAccess::class,
         'check.auth.level' => \App\Http\Middleware\CheckAuthLevel::class,
-        'check.permits' => \App\Http\Middleware\CheckPermits::class,
     ];
 }

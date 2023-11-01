@@ -18,17 +18,18 @@
                 <img src="{{asset('images/CyberLogo.png')}}" alt="Логотип CyberAdmin" style="max-width: 50px;">
                 <h1 class="m-0">CyberAdmin</h1>
                 <ul class="nav col-12 col-lg-auto mb-md-0 header-menu">
-                    <li class="header-item"><a href="{{ route('index') }}" class="nav-link px-2 {{ request()->routeIs('index') ? 'text-warning' : 'text-white' }}">Главная</a></li>
-                    <li class="header-item"><a href="#" class="nav-link px-2 text-white">Статус</a></li>
+                    <li class="header-item"><a href="{{ route('index') }}" class="nav-link px-2 text-white">Главная</a></li>
+                    <li class="header-item"><a href="{{ route('status') }}" class="nav-link px-2 text-white">Статус</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->routeIs('users') ? 'text-warning' : 'text-white' }}" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
                             БД
                         </a>
                         <ul class="dropdown-menu text-bg-dark">
-                            <li><a class="dropdown-item text-white text-bg-dark" href="#">Товары</a></li>
-                            <li><a class="dropdown-item text-white text-bg-dark" href="#">Брони</a></li>
-                            <li><a class="dropdown-item text-white text-bg-dark" href="#">Продажи</a></li>
+                            <li><a class="dropdown-item text-white text-bg-dark" href="{{ route('products') }}">Товары</a></li>
+                            <li><a class="dropdown-item text-white text-bg-dark" href="{{ route('reservations') }}">Брони</a></li>
+                            <li><a class="dropdown-item text-white text-bg-dark" href="{{ route('sales') }}">Продажи</a></li>
+                            <li><a class="dropdown-item text-white text-bg-dark" href="{{ route('rents') }}">Аренды</a></li>
                             <li>
                                 <hr class="dropdown-divider bg-white">
                             </li>
@@ -65,10 +66,11 @@
     <div class="container">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="footer-item"><a href="{{ route('index') }}" class="nav-link px-2 text-white">Главная</a></li>
-            <li class="footer-item"><a href="#" class="nav-link px-2 text-white">Статус</a></li>
-            <li class="footer-item"><a href="#" class="nav-link px-2 text-white">Товары</a></li>
-            <li class="footer-item"><a href="#" class="nav-link px-2 text-white">Брони</a></li>
-            <li class="footer-item"><a href="#" class="nav-link px-2 text-white">Продажи</a></li>
+            <li class="footer-item"><a href="{{ route('status') }}" class="nav-link px-2 text-white">Статус</a></li>
+            <li class="footer-item"><a href="{{ route('products') }}" class="nav-link px-2 text-white">Товары</a></li>
+            <li class="footer-item"><a href="{{ route('reservations') }}" class="nav-link px-2 text-white">Брони</a></li>
+            <li class="footer-item"><a href="{{ route('sales') }}" class="nav-link px-2 text-white">Продажи</a></li>
+            <li class="footer-item"><a href="{{ route('rents') }}" class="nav-link px-2 text-white">Аренды</a></li>
             <li class="footer-item"><a href="{{ route('users') }}" class="nav-link px-2 text-white">Пользователи</a></li>
             <li class="footer-item"><a href="{{ route('telescope') }}" class="nav-link px-2 text-white">Телескоп</a></li>
         </ul>
